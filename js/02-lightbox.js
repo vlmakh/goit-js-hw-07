@@ -1,23 +1,17 @@
 import { galleryItems } from "./gallery-items.js";
-// Change code below this line
-
-// console.log(galleryItems);
 
 const galleryRef = document.querySelector(".gallery");
 const itemsList = createImagesMarkup(galleryItems);
-const imageLink = galleryRef.querySelector(".gallery__link", onImageClick);
 
 galleryRef.innerHTML = itemsList;
 galleryRef.addEventListener("click", onImageClick);
 
-// console.log(createImagesMarkup(galleryItems))
-
 function createImagesMarkup(images) {
   return images
     .map(
-      (item) =>
-        `<a class="gallery__item" href="${item.original}">
-         <img class="gallery__image" src="${item.preview}" alt="${item.description}" title="${item.description}"/>
+      (image) =>
+        `<a class="gallery__item" href="${image.original}">
+         <img class="gallery__image" src="${image.preview}" alt="${image.description}" title="${image.description}"/>
         </a>`
     )
     .join("");
@@ -31,11 +25,7 @@ function onImageClick(evt) {
   }
 
   var gallery = new SimpleLightbox(".gallery a", {
-    /*optons*/
+    captionPosition: "bottom",
+    captionDelay: 250,
   });
-
-  // gallery.on('show.simplelightbox', function () {
-  // captionsData: evt.target.alt;
-  // });
-  // не понятно какой синтаксис Options, использовать для дополнительный настроек
 }
